@@ -68,6 +68,8 @@ $conn->close();
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Add Watches</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="icon" type="image/png" sizes="32x32" href="https://wristwin.shop/static/icon.png">
+<link rel="icon" type="image/png" sizes="16x16" href="https://wristwin.shop/static/icon.png">
 <style>
 /* Copy your CSS from Flask template */
 body { font-family:"Poppins",sans-serif; margin:0; padding:40px 20px; min-height:100vh; background: linear-gradient(135deg,#1b2735,#2c3e50,#243b55); background-size:400% 400%; animation:gradientFlow 18s ease infinite; display:flex; justify-content:center; align-items:flex-start; color:#eaeaea; overflow:hidden; }

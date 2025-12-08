@@ -23,6 +23,8 @@ $result = $conn->query($sql);
 <meta charset="UTF-8">
 <title>Watch Admin Dashboard</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="icon" type="image/png" sizes="32x32" href="https://wristwin.shop/static/icon.png">
+<link rel="icon" type="image/png" sizes="16x16" href="https://wristwin.shop/static/icon.png">
 <style>
 body {
     margin:0; 
@@ -118,9 +120,48 @@ td img{
     transition: all 0.3s ease;
 }
 .btn-success { background: linear-gradient(90deg, #00b09b, #96c93d); }
-.btn-edit { background: linear-gradient(90deg, #ffcc00, #ffd633); color: #000; }
-.btn-delete { background: linear-gradient(90deg, #ff416c, #ff4b2b); }
 .btn:hover { transform: translateY(-3px); }
+/* Action Buttons */
+.btn-edit,
+.btn-delete {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 6px;
+    margin-right: 5px;
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+/* Edit Button (Yellow/Black like pencil icon) */
+.btn-edit {
+    background: #f1c40f;
+}
+
+/* Delete Button (Red) */
+.btn-delete {
+    background: #e74c3c;
+}
+
+.btn-edit:hover {
+    background: #d4ac0d;
+}
+
+.btn-delete:hover {
+    background: #c0392b;
+}
+
+/* Icons fixed size */
+.btn-edit i,
+.btn-delete i {
+    font-size: 15px;
+    color: white;
+}
+
 </style>
 </head>
 <body>

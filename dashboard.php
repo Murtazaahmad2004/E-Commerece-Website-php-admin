@@ -47,6 +47,8 @@ $total_sales = $conn->query("SELECT IFNULL(SUM(total),0) AS total FROM orders")
 <meta charset="UTF-8">
 <title>Wrist Win Admin Dashboard</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="icon" type="image/png" sizes="32x32" href="https://wristwin.shop/static/icon.png">
+<link rel="icon" type="image/png" sizes="16x16" href="https://wristwin.shop/static/icon.png">
 
 <style>
 /* ===== Your Original CSS ===== */
@@ -63,6 +65,7 @@ linear-gradient(180deg, rgba(0, 0, 0, 0.9) 10%, rgba(26, 26, 26, 0.95) 50%);
 background-size: cover;
 background-position: center;
 background-attachment: fixed;
+overflow: hidden;
 }
 
 .navbar {
