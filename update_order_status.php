@@ -8,9 +8,11 @@ if ($conn->connect_error) {
 }
 
 $id = intval($_GET['id']);
-$sql = "DELETE FROM orders WHERE id=?";
+$status = $_GET['status'];
+
+$sql = "UPDATE orders SET status=? WHERE id=?";
 $stmt = $conn->prepare($sql);
-$stmt->bind_param("i", $id);
+$stmt->bind_param("si", $status, $id);
 
 if ($stmt->execute()) {
     echo json_encode(['success' => true]);

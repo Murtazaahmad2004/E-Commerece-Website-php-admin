@@ -26,6 +26,7 @@ if ($result && $result->num_rows > 0) {
 $flash = $_SESSION['flash'] ?? '';
 unset($_SESSION['flash']);
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -86,7 +87,21 @@ tr:hover{background:rgba(255,255,255,0.08); transition:0.2s;}
 <table class="paginated-table" id="ordersTable">
 <thead>
 <tr>
-<th>ID</th><th>Customer</th><th>Email</th><th>Contact</th><th>Country</th><th>City</th><th>Postal</th><th>Address</th><th>Total</th><th>Sale Status</th><th>Payment</th><th>Items</th><th>Status</th><th>Created At</th><th>Action</th>
+    <th>ID</th>
+    <th>Customer</th>
+    <th>Email</th>
+    <th>Contact</th>
+    <th>Country</th>
+    <th>City</th>
+    <th>Postal</th>
+    <th>Address</th>
+    <th>Total</th>
+    <th>Sale Status</th>
+    <th>Payment</th>
+    <th>Items</th>
+    <th>Status</th>
+    <th>Created At</th>
+    <th>Action</th>
 </tr>
 </thead>
 <tbody>
