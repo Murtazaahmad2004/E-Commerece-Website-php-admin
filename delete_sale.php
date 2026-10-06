@@ -3,17 +3,40 @@
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
-$servername = "localhost";
-$username = "u459954629_hostinger";
-$password = "Root@2004@2004";
-$dbname = "u459954629_ecommercestore";
+// Database connection
+$servername = "gateway01.ap-northeast-1.prod.aws.tidbcloud.com";
+$username = getenv("DB_USERNAME");
+$password = getenv("DB_PASSWORD");
+$dbname = "ecommerece";
+$dbport = 4000;
 
-// 1. Create DB connection
-$conn = new mysqli($servername, $username, $password, $dbname);
+// TiDB Cloud TLS configuration
+$ssl_ca = __DIR__ . "/ca.pem";
 
-// 2. Check connection
+$conn = mysqli_init();
+
+mysqli_ssl_set(
+    $conn,
+    NULL,       // client key
+    NULL,       // client certificate
+    $ssl_ca,    // CA certificate
+    NULL,
+    NULL
+);
+
+mysqli_real_connect(
+    $conn,
+    $servername,
+    $username,
+    $password,
+    $dbname,
+    $dbport,
+    NULL,
+    MYSQLI_CLIENT_SSL
+);
+
 if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+    die("Database connection failed: " . $conn->connect_error);
 }
 
 // 3. Check if ID exists in URL
