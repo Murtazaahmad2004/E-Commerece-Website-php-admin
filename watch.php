@@ -3,15 +3,41 @@ session_start();
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
-// Database config
-$servername = "localhost";
-$username   = "u459954629_hostinger";
-$password   = "Root@2004@2004";
-$dbname     = "u459954629_ecommercestore";
+// Database connection
+$servername = "gateway01.ap-northeast-1.prod.aws.tidbcloud.com";
+$username = getenv("DB_USERNAME");
+$password = getenv("DB_PASSWORD");
+$dbname = "ecommerece";
+$dbport = 4000;
 
-// Connect
-$conn = new mysqli($servername, $username, $password, $dbname);
-if ($conn->connect_error) die("Database connection failed: " . $conn->connect_error);
+// TiDB Cloud TLS configuration
+$ssl_ca = __DIR__ . "/ca.pem";
+
+$conn = mysqli_init();
+
+mysqli_ssl_set(
+    $conn,
+    NULL,       // client key
+    NULL,       // client certificate
+    $ssl_ca,    // CA certificate
+    NULL,
+    NULL
+);
+
+mysqli_real_connect(
+    $conn,
+    $servername,
+    $username,
+    $password,
+    $dbname,
+    $dbport,
+    NULL,
+    MYSQLI_CLIENT_SSL
+);
+
+if ($conn->connect_error) {
+    die("Database connection failed: " . $conn->connect_error);
+}
 
 // Allowed image types
 $allowed_extensions = ['jpg','jpeg','png','gif','webp'];

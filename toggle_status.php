@@ -1,15 +1,38 @@
 <?php
-$servername = "localhost";               
-$username = "u459954629_hostinger";     
-$password = "Root@2004@2004";          
-$dbname = "u459954629_ecommercestore";  
+// Database connection
+$servername = "gateway01.ap-northeast-1.prod.aws.tidbcloud.com";
+$username = getenv("DB_USERNAME");
+$password = getenv("DB_PASSWORD");
+$dbname = "ecommerece";
+$dbport = 4000;
 
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
+// TiDB Cloud TLS configuration
+$ssl_ca = __DIR__ . "/ca.pem";
 
-// Check connection
+$conn = mysqli_init();
+
+mysqli_ssl_set(
+    $conn,
+    NULL,       // client key
+    NULL,       // client certificate
+    $ssl_ca,    // CA certificate
+    NULL,
+    NULL
+);
+
+mysqli_real_connect(
+    $conn,
+    $servername,
+    $username,
+    $password,
+    $dbname,
+    $dbport,
+    NULL,
+    MYSQLI_CLIENT_SSL
+);
+
 if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+    die("Database connection failed: " . $conn->connect_error);
 }
 
 if (!isset($_GET['id'])) {

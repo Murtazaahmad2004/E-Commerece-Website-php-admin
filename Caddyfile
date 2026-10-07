@@ -2,7 +2,7 @@
     root * /app
 
     @home path /
-    rewrite @home /admin.php
+    rewrite @home /home.php
 
     php_server
 }
