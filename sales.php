@@ -1,39 +1,8 @@
 <?php
-// Database connection
-$servername = "gateway01.ap-northeast-1.prod.aws.tidbcloud.com";
-$username = getenv("DB_USERNAME");
-$password = getenv("DB_PASSWORD");
-$dbname = "ecommerece";
-$dbport = 4000;
-
-// TiDB Cloud TLS configuration
-$ssl_ca = __DIR__ . "/ca.pem";
-
-$conn = mysqli_init();
-
-mysqli_ssl_set(
-    $conn,
-    NULL,       // client key
-    NULL,       // client certificate
-    $ssl_ca,    // CA certificate
-    NULL,
-    NULL
-);
-
-mysqli_real_connect(
-    $conn,
-    $servername,
-    $username,
-    $password,
-    $dbname,
-    $dbport,
-    NULL,
-    MYSQLI_CLIENT_SSL
-);
-
-if ($conn->connect_error) {
-    die("Database connection failed: " . $conn->connect_error);
-}
+$servername = "localhost";               // Usually localhost on Hostinger
+$username = "u459954629_hostinger";     // Your MySQL user
+$password = "Root@2004@2004";          // Your MySQL password
+$dbname = "u459954629_ecommercestore";  // Your database name
 
 $sql = "SELECT * FROM sales WHERE status='active' ORDER BY discount_percent DESC";
 $result = $conn->query($sql);
