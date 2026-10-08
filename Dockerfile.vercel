@@ -5,8 +5,8 @@ WORKDIR /app
 COPY . /app
 COPY Caddyfile /etc/caddy/Caddyfile
 
-# Install MySQLi extension
-RUN install-php-extensions mysqli
+# Install required PHP extensions
+RUN install-php-extensions mysqli curl
 
 RUN mkdir -p /data
 
