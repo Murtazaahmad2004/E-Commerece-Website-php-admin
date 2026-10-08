@@ -267,6 +267,7 @@ if ($result && $result->num_rows > 0) {
 } else {
     echo "<tr><td colspan='9' style='color:#ffcc00;'>No watches found.</td></tr>";
 }
+
 ?>
 </tbody>
 </table>
