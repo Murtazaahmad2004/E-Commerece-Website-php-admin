@@ -228,26 +228,41 @@ td img{
 if ($result && $result->num_rows > 0) {
     $i = 1;
     while ($w = $result->fetch_assoc()) {
-        // Check if image file exists, otherwise use default
-        $imagePath = !empty($w['image']) ? $w['image'] : '';
-        if (!file_exists($imagePath) || empty($imagePath)) {
-            $imagePath = 'uploads/default.png';
-        }
 
-        echo "<tr>";
-        echo "<td>".$i++."</td>";
-        echo "<td><img src='".htmlspecialchars($imagePath)."' alt='".htmlspecialchars($w['name'])."'></td>";
-        echo "<td>".htmlspecialchars($w['name'])."</td>";
-        echo "<td>".htmlspecialchars($w['category'])."</td>";
-        echo "<td>".htmlspecialchars($w['description'])."</td>";
-        echo "<td>".htmlspecialchars($w['price'])."</td>";
-        echo "<td>".htmlspecialchars($w['sale_price'])."</td>";
-        echo "<td>".htmlspecialchars($w['stock'])."</td>";
-        echo "<td>
-                <a class='btn-edit' href='edit_watch.php?id=".htmlspecialchars($w['id'])."'><i class='fa fa-pen'></i></a>
-                <a class='btn-delete' href='delete_watch.php?id=".htmlspecialchars($w['id'])."' onclick='return confirm(\"Are you sure?\")'><i class='fa fa-trash'></i></a>
-              </td>";
-        echo "</tr>";
+    // Image URL is already stored in database
+    // Supabase public URL
+    $imagePath = !empty($w['image'])
+        ? $w['image']
+        : 'https://wristwin.shop/admin/uploads/default.png';
+
+    echo "<tr>";
+    echo "<td>".$i++."</td>";
+
+    echo "<td>
+            <img src='".htmlspecialchars($imagePath)."' 
+                 alt='".htmlspecialchars($w['name'])."'>
+          </td>";
+
+    echo "<td>".htmlspecialchars($w['name'])."</td>";
+    echo "<td>".htmlspecialchars($w['category'])."</td>";
+    echo "<td>".htmlspecialchars($w['description'])."</td>";
+    echo "<td>".htmlspecialchars($w['price'])."</td>";
+    echo "<td>".htmlspecialchars($w['sale_price'])."</td>";
+    echo "<td>".htmlspecialchars($w['stock'])."</td>";
+
+    echo "<td>
+            <a class='btn-edit' href='edit_watch.php?id=".htmlspecialchars($w['id'])."'>
+                <i class='fa fa-pen'></i>
+            </a>
+
+            <a class='btn-delete' 
+               href='delete_watch.php?id=".htmlspecialchars($w['id'])."' 
+               onclick='return confirm(\"Are you sure?\")'>
+                <i class='fa fa-trash'></i>
+            </a>
+          </td>";
+
+    echo "</tr>";
     }
 } else {
     echo "<tr><td colspan='9' style='color:#ffcc00;'>No watches found.</td></tr>";
