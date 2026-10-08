@@ -149,7 +149,7 @@ $conn->close();
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Wrist Win Admin Report</title>
+<title>Time & Style Admin Report</title>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <link rel="icon" type="image/png" sizes="32x32" href="https://wristwin.shop/static/icon.png">
@@ -322,7 +322,7 @@ $conn->close();
 </style>
 </head>
 <body>
-<header><i class="fa-solid fa-chart-line"></i> Wrist Win Admin Report</header>
+<header><i class="fa-solid fa-chart-line"></i> Time & Style Admin Report</header>
 
 <!-- Filter Bar -->
 <div class="filter-bar">

@@ -66,7 +66,7 @@ $total_sales = $conn->query("SELECT IFNULL(SUM(total),0) AS total FROM orders")
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Wrist Win Admin Dashboard</title>
+<title>Time & Style Admin Dashboard</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <link rel="icon" type="image/png" sizes="32x32" href="https://wristwin.shop/static/icon.png">
 <link rel="icon" type="image/png" sizes="16x16" href="https://wristwin.shop/static/icon.png">
@@ -147,7 +147,7 @@ font-weight: bold;
 
 <!-- NAVBAR -->
 <div class="navbar">
-    <h2><i class="fa-solid fa-crown"></i> Wrist Win Watches</h2>
+    <h2><i class="fa-solid fa-crown"></i> Time & Style Watches</h2>
     <ul>
         <li><a href="add_sale.php"><i class="fa-solid fa-tag"></i> Add Sale</a></li>
         <li><a href="manage_sales.php"><i class="fa-solid fa-basket-shopping"></i> Manage Sales</a></li>
@@ -157,7 +157,7 @@ font-weight: bold;
     </ul>
 </div>
 
-<h3 style="color:#ffcc00; margin-top:40px;">Wrist Win Admin Dashboard</h3>
+<h3 style="color:#ffcc00; margin-top:40px;">Time & Style Admin Dashboard</h3>
 
 <div class="cards">
 
