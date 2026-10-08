@@ -147,7 +147,7 @@ font-weight: bold;
 
 <!-- NAVBAR -->
 <div class="navbar">
-    <h2><i class="fa-solid fa-crown"></i> Time & Style Watches</h2>
+    <h2><i class="fa-solid fa-crown"></i> Time & Style</h2>
     <ul>
         <li><a href="add_sale.php"><i class="fa-solid fa-tag"></i> Add Sale</a></li>
         <li><a href="manage_sales.php"><i class="fa-solid fa-basket-shopping"></i> Manage Sales</a></li>
