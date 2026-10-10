@@ -13,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = trim($_POST['username'] ?? '');
     $password = $_POST['password'] ?? '';
 
-    if ($username === 'glamauraastore@gmail.com' && $password === 'GlamauraStore@1090') {
+    if ($username === 'glamauraastore@gmail.com' && $password === 'GlamauraStore@OnlineStore@2026') {
         session_regenerate_id(true);
         $_SESSION['logged_in'] = true;
         $_SESSION['username']  = $username;
