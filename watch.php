@@ -68,7 +68,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         !isset($_FILES['image'])
     ) {
         $_SESSION['message'] = "❌ Please fill all required fields.";
-        header("Location: watch.php");
+        header("Location: Product.php");
         exit;
     }
 
@@ -86,7 +86,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         if (!in_array($ext, $allowed_extensions, true)) {
             $_SESSION['message'] = "❌ Invalid image type!";
-            header("Location: watch.php");
+            header("Location: Product.php");
             exit;
         }
 
@@ -96,7 +96,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         if (!in_array($mime_type, $allowed_mime_types, true)) {
             $_SESSION['message'] = "❌ Invalid image file!";
-            header("Location: watch.php");
+            header("Location: Product.php");
             exit;
         }
 
@@ -104,18 +104,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         if ($file_size > $max_file_size) {
             $_SESSION['message'] = "❌ Image must be less than 5 MB.";
-            header("Location: watch.php");
+            header("Location: Product.php");
             exit;
         }
 
-        $new_filename = "watch_" . bin2hex(random_bytes(16)) . "." . $ext;
+        $new_filename = "Product_" . bin2hex(random_bytes(16)) . "." . $ext;
         $storage_path = $new_filename;
 
         $file_contents = file_get_contents($tmp_name);
 
         if ($file_contents === false) {
             $_SESSION['message'] = "❌ Could not read uploaded image.";
-            header("Location: watch.php");
+            header("Location: Product.php");
             exit;
         }
 
@@ -141,13 +141,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         if ($response === false || $curl_error) {
             $_SESSION['message'] = "❌ Image upload failed: " . $curl_error;
-            header("Location: watch.php");
+            header("Location: Product.php");
             exit;
         }
 
         if ($http_code < 200 || $http_code >= 300) {
             $_SESSION['message'] = "❌ Supabase upload failed. HTTP Code: " . $http_code . " Response: " . $response;
-            header("Location: watch.php");
+            header("Location: Product.php");
             exit;
         }
 
@@ -161,7 +161,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if (!$stmt) {
         $_SESSION['message'] = "❌ Database prepare error: " . $conn->error;
-        header("Location: watch.php");
+        header("Location: Product.php");
         exit;
     }
 
@@ -177,7 +177,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     );
 
     if ($stmt->execute()) {
-        $_SESSION['message'] = "✅ Watch added successfully!";
+        $_SESSION['message'] = "✅ Product added successfully!";
         $stmt->close();
         $conn->close();
         header("Location: admin.php");
@@ -407,16 +407,16 @@ $conn->close();
     <div class="form-container">
         <h2>
             <i class="fa-solid fa-clock"></i>
-            Add New Watch
+            Add New Product
         </h2>
 
         <form method="POST" enctype="multipart/form-data">
             <div>
                 <label for="name">
                     <i class="fa-solid fa-font"></i>
-                    Watch Name
+                    Product Name
                 </label>
-                <input type="text" name="name" id="name" placeholder="Enter Watch Name" required>
+                <input type="text" name="name" id="name" placeholder="Enter Product Name" required>
             </div>
 
             <div>
@@ -474,7 +474,7 @@ $conn->close();
             <div class="btn-group">
                 <button type="submit" class="btn-submit">
                     <i class="fa-solid fa-upload"></i>
-                    Upload Watch
+                    Upload Product
                 </button>
 
                 <a href="admin.php" class="btn-back">

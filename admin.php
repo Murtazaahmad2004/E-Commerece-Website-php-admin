@@ -48,7 +48,7 @@ $result = $conn->query($sql);
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Watch Admin Dashboard</title>
+<title>Product Admin Dashboard</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <link rel="icon" type="image/png" sizes="32x32" href="https://wristwin.shop/static/icon.png">
 <link rel="icon" type="image/png" sizes="16x16" href="https://wristwin.shop/static/icon.png">
@@ -193,18 +193,18 @@ td img{
 </head>
 <body>
 
-<h1>⌚ Watch Admin Dashboard</h1>
+<h1>⌚ Product Admin Dashboard</h1>
 
 <div class="top-actions">
     <div class="search-box">
         <form method="GET" id="searchForm">
-            <input type="text" id="searchInput" placeholder="Search watch by name or price...">
+            <input type="text" id="searchInput" placeholder="Search Product by name or price...">
             <button type="submit" class="btn btn-success">
                 <i class="fa-solid fa-magnifying-glass"></i> Search
             </button>
         </form>
     </div>
-    <a href="watch.php" class="btn btn-success"><i class="fa-solid fa-plus"></i> Add Watch</a>
+    <a href="Product.php" class="btn btn-success"><i class="fa-solid fa-plus"></i> Add Product</a>
     <a href="dashboard.php" class="btn btn-success"><i class="fa-solid fa-house"></i> Home</a>
 </div>
 
@@ -251,12 +251,12 @@ if ($result && $result->num_rows > 0) {
     echo "<td>".htmlspecialchars($w['stock'])."</td>";
 
     echo "<td>
-            <a class='btn-edit' href='edit_watch.php?id=".htmlspecialchars($w['id'])."'>
+            <a class='btn-edit' href='edit_Product.php?id=".htmlspecialchars($w['id'])."'>
                 <i class='fa fa-pen'></i>
             </a>
 
             <a class='btn-delete' 
-               href='delete_watch.php?id=".htmlspecialchars($w['id'])."' 
+               href='delete_Product.php?id=".htmlspecialchars($w['id'])."' 
                onclick='return confirm(\"Are you sure?\")'>
                 <i class='fa fa-trash'></i>
             </a>

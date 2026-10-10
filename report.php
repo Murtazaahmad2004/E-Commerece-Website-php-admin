@@ -127,20 +127,20 @@ if ($selected_date) {
 }
 $stmt->execute();
 $result = $stmt->get_result();
-$watch_sales = [];
+$Product_sales = [];
 while ($row = $result->fetch_assoc()) {
     $items = json_decode($row['items'], true);
     if (is_array($items)) {
         foreach ($items as $item) {
             $name = $item['name'] ?? '';
             $qty = $item['quantity'] ?? 1;
-            if ($name) $watch_sales[$name] = ($watch_sales[$name] ?? 0) + $qty;
+            if ($name) $Product_sales[$name] = ($Product_sales[$name] ?? 0) + $qty;
         }
     }
 }
 $stmt->close();
-arsort($watch_sales);
-$top_product = array_slice($watch_sales, 0, 5, true);
+arsort($Product_sales);
+$top_product = array_slice($Product_sales, 0, 5, true);
 
 $conn->close();
 ?>

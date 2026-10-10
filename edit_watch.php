@@ -50,7 +50,7 @@ if (!isset($_GET['id'])) {
 $id = intval($_GET['id']);
 
 // -------------------------------------------------------
-// Fetch existing watch record
+// Fetch existing Product record
 // -------------------------------------------------------
 $sql = "SELECT * FROM product WHERE id = ?";
 $stmt = $conn->prepare($sql);
@@ -62,15 +62,15 @@ if (!$stmt) {
 $stmt->bind_param("i", $id);
 $stmt->execute();
 $result = $stmt->get_result();
-$watch_item = $result->fetch_assoc();
+$Product_item = $result->fetch_assoc();
 
-if (!$watch_item) {
-    echo "<script>alert('❌ Watch not found!'); window.location='admin.php';</script>";
+if (!$Product_item) {
+    echo "<script>alert('❌ Product not found!'); window.location='admin.php';</script>";
     exit();
 }
 
 // -------------------------------------------------------
-// UPDATE Watch Data (Form Submitted)
+// UPDATE Product Data (Form Submitted)
 // -------------------------------------------------------
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
@@ -86,7 +86,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     } else {
 
         // ----------- Image upload -----------
-        $img_path = $watch_item['image']; // keep old if not replaced
+        $img_path = $Product_item['image']; // keep old if not replaced
 
         if (!empty($_FILES['image']['name'])) {
 
@@ -96,8 +96,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             if (move_uploaded_file($_FILES['image']['tmp_name'], $upload_path)) {
 
                 // delete old
-                if (!empty($watch_item['image']) && file_exists($watch_item['image'])) {
-                    unlink($watch_item['image']);
+                if (!empty($Product_item['image']) && file_exists($Product_item['image'])) {
+                    unlink($Product_item['image']);
                 }
 
                 $img_path = $upload_path;
@@ -128,7 +128,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         );
 
         if ($stmt2->execute()) {
-            echo "<script>alert('✔ Watch updated successfully!'); window.location='admin.php';</script>";
+            echo "<script>alert('✔ Product updated successfully!'); window.location='admin.php';</script>";
         } else {
             echo "<script>alert('❌ Update failed!');</script>";
         }
@@ -141,7 +141,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Edit Watch</title>
+<title>Edit Product</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <link rel="icon" type="image/png" sizes="32x32" href="https://wristwin.shop/static/icon.png">
 <link rel="icon" type="image/png" sizes="16x16" href="https://wristwin.shop/static/icon.png">
@@ -259,35 +259,35 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 <body>
 
     <div class="form-container">
-        <h2><i class="fa-solid fa-pen-to-square"></i> Edit Watch</h2>
+        <h2><i class="fa-solid fa-pen-to-square"></i> Edit Product</h2>
 
         <form method="POST" enctype="multipart/form-data">
 
-            <label>Watch Name</label>
-            <input type="text" name="name" value="<?= $watch_item['name'] ?>" required>
+            <label>Product Name</label>
+            <input type="text" name="name" value="<?= $Product_item['name'] ?>" required>
 
             <label>Price</label>
-            <input type="number" step="0.01" name="price" value="<?= $watch_item['price'] ?>" required>
+            <input type="number" step="0.01" name="price" value="<?= $Product_item['price'] ?>" required>
 
             <label>Sale Price</label>
-            <input type="number" step="0.01" name="sale_price" value="<?= $watch_item['sale_price'] ?>">
+            <input type="number" step="0.01" name="sale_price" value="<?= $Product_item['sale_price'] ?>">
 
             <label>Stock</label>
-            <input type="number" name="stock" value="<?= $watch_item['stock'] ?>" required>
+            <input type="number" name="stock" value="<?= $Product_item['stock'] ?>" required>
 
             <label>Category</label>
             <select name="category">
-                <option value="Men"   <?= $watch_item['category'] == "Men" ? "selected" : "" ?>>Men</option>
-                <option value="Women" <?= $watch_item['category'] == "Women" ? "selected" : "" ?>>Women</option>
+                <option value="Men"   <?= $Product_item['category'] == "Men" ? "selected" : "" ?>>Men</option>
+                <option value="Women" <?= $Product_item['category'] == "Women" ? "selected" : "" ?>>Women</option>
             </select>
 
             <label>Description</label>
-            <textarea name="description" required><?= $watch_item['description'] ?></textarea>
+            <textarea name="description" required><?= $Product_item['description'] ?></textarea>
 
             <div class="current-image">
                 <p>Current Image</p>
-                <?php if (!empty($watch_item['image'])): ?>
-                    <img src="<?= $watch_item['image'] ?>">
+                <?php if (!empty($Product_item['image'])): ?>
+                    <img src="<?= $Product_item['image'] ?>">
                 <?php else: ?>
                     <p>No image uploaded</p>
                 <?php endif; ?>
@@ -296,7 +296,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             <label>Upload New Image (optional)</label>
             <input type="file" name="image" accept="image/*">
 
-            <button class="btn-submit" type="submit">Update Watch</button>
+            <button class="btn-submit" type="submit">Update Product</button>
 
         </form>
     </div>
