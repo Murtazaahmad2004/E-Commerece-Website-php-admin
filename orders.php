@@ -59,7 +59,7 @@ unset($_SESSION['flash']);
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Admin Orders - Glamaura Watches</title>
+<title>Admin Orders - Glamaura product</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <link rel="icon" type="image/png" sizes="32x32" href="https://wristwin.shop/static/icon.png">
 <link rel="icon" type="image/png" sizes="16x16" href="https://wristwin.shop/static/icon.png">
@@ -182,7 +182,7 @@ style="background:linear-gradient(90deg,#ef4444,#dc2626);border:none;padding:6px
 <div id="itemModal" class="modal">
 <div class="modal-content">
 <button class="close-btn" onclick="closeModal()">×</button>
-<h3>Ordered Watches</h3>
+<h3>Ordered product</h3>
 <div id="itemsList"></div>
 </div>
 </div>

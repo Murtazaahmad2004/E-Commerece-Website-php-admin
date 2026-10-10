@@ -47,7 +47,7 @@ if (!$supabase_url || !$supabase_key) {
 }
 
 $supabase_url = rtrim($supabase_url, "/");
-$bucket_name = "watches";
+$bucket_name = "product";
 
 // Allowed image types
 $allowed_extensions = ['jpg', 'jpeg', 'png', 'gif', 'webp'];
@@ -155,7 +155,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     $stmt = $conn->prepare(
-        "INSERT INTO watches (name, image, description, price, sale_price, stock, category)
+        "INSERT INTO product (name, image, description, price, sale_price, stock, category)
         VALUES (?, ?, ?, ?, ?, ?, ?)"
     );
 
@@ -197,7 +197,7 @@ $conn->close();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Watches</title>
+    <title>Add product</title>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="icon" type="image/png" sizes="32x32" href="https://wristwin.shop/static/icon.png">

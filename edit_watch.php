@@ -52,7 +52,7 @@ $id = intval($_GET['id']);
 // -------------------------------------------------------
 // Fetch existing watch record
 // -------------------------------------------------------
-$sql = "SELECT * FROM watches WHERE id = ?";
+$sql = "SELECT * FROM product WHERE id = ?";
 $stmt = $conn->prepare($sql);
 
 if (!$stmt) {
@@ -105,7 +105,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         }
 
         // ----------- Update Query -----------
-        $update = "UPDATE watches SET 
+        $update = "UPDATE product SET 
                     name=?, image=?, description=?, price=?, sale_price=?, 
                     stock=?, category=? WHERE id=?";
 

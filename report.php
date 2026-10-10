@@ -116,7 +116,7 @@ while ($row = $result->fetch_assoc()) {
 }
 $stmt->close();
 
-// Top 5 Watches
+// Top 5 product
 if ($selected_date) {
     $sql = "SELECT items FROM orders WHERE items IS NOT NULL AND items != '' AND DATE(created_at)=?";
     $stmt = $conn->prepare($sql);
@@ -140,7 +140,7 @@ while ($row = $result->fetch_assoc()) {
 }
 $stmt->close();
 arsort($watch_sales);
-$top_watches = array_slice($watch_sales, 0, 5, true);
+$top_product = array_slice($watch_sales, 0, 5, true);
 
 $conn->close();
 ?>
@@ -375,10 +375,10 @@ $conn->close();
 
 <!-- Top Products -->
 <div class="top-products">
-    <h3>🌸 Top 5 Watches</h3>
+    <h3>🌸 Top 5 product</h3>
     <ul>
-        <?php if ($top_watches): ?>
-            <?php foreach ($top_watches as $name => $qty): ?>
+        <?php if ($top_product): ?>
+            <?php foreach ($top_product as $name => $qty): ?>
                 <li><span><?= htmlspecialchars($name) ?></span> — <?= $qty ?> sold</li>
             <?php endforeach; ?>
         <?php else: ?>

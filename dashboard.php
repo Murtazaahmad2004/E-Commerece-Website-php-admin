@@ -45,8 +45,8 @@ if ($conn->connect_error) {
 // FETCH DASHBOARD COUNTS
 // ------------------------
 
-// Total Watches
-$total_watches = $conn->query("SELECT COUNT(*) AS count FROM watches")
+// Total product
+$total_product = $conn->query("SELECT COUNT(*) AS count FROM product")
                       ->fetch_assoc()['count'];
 
 // Total Orders
@@ -151,7 +151,7 @@ font-weight: bold;
     <ul>
         <li><a href="add_sale.php"><i class="fa-solid fa-tag"></i> Add Sale</a></li>
         <li><a href="manage_sales.php"><i class="fa-solid fa-basket-shopping"></i> Manage Sales</a></li>
-        <li><a href="admin.php"><i class="fa-solid fa-clock"></i> Watches</a></li>
+        <li><a href="admin.php"><i class="fa-solid fa-clock"></i> product</a></li>
         <li><a href=" orders.php"><i class="fa-solid fa-receipt"></i> Orders</a></li>
         <li><a href="report.php"><i class="fa-solid fa-chart-line"></i> Reports</a></li>
     </ul>
@@ -163,8 +163,8 @@ font-weight: bold;
 
     <div class="card">
         <i class="fa-solid fa-box"></i>
-        <h4>Total Watches</h4>
-        <p><?php echo $total_watches; ?></p>
+        <h4>Total product</h4>
+        <p><?php echo $total_product; ?></p>
     </div>
 
     <div class="card">

@@ -48,7 +48,7 @@ $watch_id = intval($_GET['id']);
 // -----------------------
 // Fetch Watch Image
 // -----------------------
-$sql = "SELECT image FROM watches WHERE id = ?";
+$sql = "SELECT image FROM produco WHERE id = ?";
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("i", $watch_id);
 $stmt->execute();
@@ -83,7 +83,7 @@ if (!empty($imagePath) && $imagePath !== $DEFAULT_IMAGE) {
 // -----------------------
 // Delete Watch from DB
 // -----------------------
-$sql_delete = "DELETE FROM watches WHERE id = ?";
+$sql_delete = "DELETE FROM produco WHERE id = ?";
 $stmt_delete = $conn->prepare($sql_delete);
 $stmt_delete->bind_param("i", $watch_id);
 

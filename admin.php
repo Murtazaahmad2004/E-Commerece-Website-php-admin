@@ -39,8 +39,8 @@ if ($conn->connect_error) {
     die("Database connection failed: " . $conn->connect_error);
 }
 
-// Fetch watches
-$sql = "SELECT * FROM watches";
+// Fetch product
+$sql = "SELECT * FROM product";
 $result = $conn->query($sql);
 ?>
 
@@ -265,7 +265,7 @@ if ($result && $result->num_rows > 0) {
     echo "</tr>";
     }
 } else {
-    echo "<tr><td colspan='9' style='color:#ffcc00;'>No watches found.</td></tr>";
+    echo "<tr><td colspan='9' style='color:#ffcc00;'>No product found.</td></tr>";
 }
 
 ?>
